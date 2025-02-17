@@ -1,0 +1,400 @@
+
+# What is Django?
+
+So Django is a python based well structured framework that allow us to build complex web applications. It use MVT model that effortlessly allow us to make complex applications.
+
+----------
+# What are the features of Django?
+Support ORM
+Web templating system
+Middleware class support
+Built in Admin interface
+Easy inheritance
+Several in-built security features and mitigations to protect web applications
+
+-----
+# What is a virtual environment
+Virtual environment allow us to make separate dependencies to the different projects by creating isolated environments.
+Creating a virtual environment is considered as a ideal practice, because it eliminates the dependencies and conflicts.
+# What is MVT structure?
+
+MVT stands for model view template, so basically it is the relationship between the 3 structures of the python based packages named models, views and templates, where model allow us to handle, and represent the database  table, and its attributes define the columns of the table. Model allow us to interact with the database without SQL queries.
+
+Where views are the python packages that handles the user requests, interact with the models to fetch the data and return the response,  that allow us to showcase the data on our web application. They act as a bridge between the models and templates that transfer the data from model to template that show the data on our server.
+
+Templates handle the presentation and are the UI that loads our dynamic data came from views and represent it on the server.
+
+--------
+# What does the makemigrations and migrate do?
+
+makemigrations command used to create migration files for your models. it tell Django how to apply changes to your database schema based on changes made to your models.
+
+whereas migrate make the changes done which are applied to our database.
+it creates or updates the database tables
+# What is a Django project?
+
+So Django project is our main directory that contains the settings and the configurations for Django web application, it act as a framework that ties all the applications together.
+
+# Django Application?
+
+Django applications are the modular components within a project, each designed to handle the specific functionality and function.
+
+There can be multiple applications in a Django project.
+
+-------
+
+# What are the components of the project and Applications.
+
+Project consists of 
+
+- Settings.py- settings.py is a python package that is the main file in our web applications that consists of all the settings and options that is used to build and control a web application such as database configuration, middleware, installed apps, template settings.
+- urls.py - urls.py is responsible for routing HTTP request to the appropriate views in our app, it act as central URL configuration for our project.
+	- what is a http request? http request is the message sent by a client to a server to ask for information or to perform an action. it is a fundamental part of how the web works.
+	
+- asgi.py - so asgi.py act as the entry point for our project when using the asgi servers(daphne, uvicorn). It tells the server how to load your django application.
+	it is a successor of the wsgi.py where wsgi.py only handles the HTTP request , asgi.py is designed for both the asynchronous and synchronous communication.
+		What are synchronous and asynchronous communication? the synchronous communication is where the  sender and receiver communicates at same time, and the sender need to wait for the receiver to respond.
+
+		Whereas in asynchronous communication the sender and reciever need not to communicate at same time and sender can keep on working if receiver can't respond immediately.
+	
+- wsgi.py- The wsgi.py is responsible for serving the web appliction using the wsgi server like apache, it is the standard interface between web servers
+- __init__.py- init.py is the python file used to mark a directory as a python package.
+
+
+-------
+# Apps components.
+
+- views.py
+- models.py
+- admin.py- admin.py is used to load and register the models with the django admin interface. Django admin interface is a built in web application that allow us to manage our app data and perform the CRUD operations.
+	- CRUD  operations are create, read, update, delete
+- urls.py
+- test.py- it is used to write the tests for our web application, tests are important to ensure the app behave as expected and to prevent the bugs in future.
+- apps.py- it is automatically created when we start a new application, it contains the configuration class for the app. 
+
+-------------------------
+# What is Object relational Mapping?
+
+In django ORM is the core feature that enable developer to perform the CRUD operations on the database tables in a pythonic way, it  allow us to interact with the database without writing SQL queries.
+
+# What are the benefits of the ORM?
+
+- Simplicity-  No need to write the orm queries manually, we can write the python syntax
+- Database independence- It allow us to use the multiple databases making it easy to switch between them
+- Security- prevents SQL injection attacks by safely escaping queries.
+- Maintainability- Code is easier to read and maintain because written in the python.
+- Rapid development- Perform the database queries without worrying about the raw sql syntax.
+
+# What are forms ?
+
+Django provide a flexible forms module that simplifies creating, validating, and processing forms, it is used to handle the user input such as collecting the data through HTML forms, validating it, and saving it to the database. 
+
+--------
+# Why to use Django forms instead of Html forms?
+
+- Validation- Automatically validates input data.
+- Reusable- forms can be reused across multiple views and templates.
+- Security- Protects against common vulnerability like Cross site request forgery and cross site scripting.
+- Integration- Easily integrates with the models and views.
+
+# Types of the forms-
+
+Django Forms-(forms.Form)
+	Used for manually handling the fields and validation
+	Not directly tied to a model.
+Model Forms- (forms.ModelForm)
+	Automatically linked to a model 
+	Simplifies creating forms to interact with the model data
+
+------------
+# CSRF
+
+it is a type of attack where malicious website tricks the user's browser into making unintended request to another website
+
+It ensures that the POST request comes from a trusted source by using CSRF token
+- A csrf token is a unique secret value which is generated for each user session.
+- It checks if the tokens of the user match with the request, if not the request is cancelled.
+
+--------
+# What are sessions?
+
+sessions keep track of the site's and browsers state. During the session the user data is stored in sessions which end once the user close the browser or logs out of the program.
+
+-------
+# What are static files?
+
+Static files consists of the data other then text, that are mainly url, images, etc. it is used to load the static content in the templates.
+
+-----
+# What is a superuser?
+Superuser is the most powerful user with the permission to create, read, delete and update on the admin page which includes the model records.
+
+---
+# What is jinja templating?
+
+It is a modern templating engine for python, which is designed to create dynamic and reusable templates. Used to render the HTml pages dynamically.
+
+------
+# Explain the use of middlewares?
+
+They are used to keep the application secure during the request and response state
+
+--------
+
+# What are django cookies?
+
+Django cookies are a piece of information stored in the client's browser. To set and fetch cookies, django provides built-in methods to use the set_cookie() method for setting a cookie and the get() method for getting a cookie.
+
+--------
+# Explain user authentication in Django?
+
+Django comes up with a built in authentication system configured by default to handle the Users, permissions, groups etc. 
+
+It not only authenticate but also authorize them, the objects are:-
+- Users
+- Groups
+- Permissions
+- Password hashing system
+- Forms validation
+------
+# What is a Django render function?
+
+Render is a shortcut for passing a template and a data dictionary. It combines templates with a data dictionary using a templating engine.
+
+-----
+# What is a context in Django?
+A context is a dictionary in which keys represent the variable names and the values reflect the values of those variable.
+
+
+-----
+# What are n+1 queries in django?
+
+It is a common issue in ORM based systems like Django, it occurs when our code executes 1 query to fetch a parent object and then N additional queries for related objects.
+
+It can be solved using select_related() - select_related() reduces the number of queries by joining tables in single query.
+
+
+---------
+# Django simple history
+
+Django simple history is a Django package that helps us to track the changes made to our models over time. It works by storing all the changes in a separate table. This way we can see what is changed, when it is change and who made the change.
+
+It is used to 
+Track the changes
+Audit logs
+Restore old versions
+
+-------
+# Multiple database routing?
+
+Django  allow us to use multiple database in same project. Instead of using just one default database, we can set up multiple databases and decide which one to use for read, write and query.
+
+# Why?
+Data separation- Separate user data, logs, or archived data into different database.
+performance- Distribute the load
+Integration- Use separate for legacy system and third-party integrations
+Backup and scalability- Manage backups and scalability more easily.
+
+---
+
+# Management commands- 
+
+Management commands in django are custom scripts that let us automate the tasks or add custom functionality that can be run using the manage.py command. 
+these are similar to built-in commands but we can create our own to handle the specific usercase.
+
+# Why to use?
+
+- Automating tasks- Perform repetitive tasks like cleaning up the old data, sending emails, generating records, and updating them
+- Custom functionality- Add features that don't fit into the usual views or models.
+
+-------
+# Logging in Django?
+
+Logging in django is about tracking what is happening with our applications while it runs. For example, when a user visits our website, errors occur, or specific actions are performend.
+
+Logging is a way to save the messages about our application's behavior.
+These messages can be errors, warning, debug info, or general info.
+help the developer to debug their app.
+
+Common logging levels in django are:-
+- Debug- For detailed information during the development
+- Info- For general information about the app's operation
+- Warning- To highlight something unusual
+- Error- For serious issues that prevent functionality.
+- Critical- For very serious errors that cause the crash.
+
+It works as when we run our app, the logs messages appear on our console.
+Logs make the user understand what is going on with our app without disrupting the users.
+
+-------
+# Indexing in the ORM
+
+indexes in ORM are the special database feature that make the searching and retrieving the data faster. Think of them as a table of contents for our database 
+
+Instead of searching through every row index help the database to directly jump to relevant row.
+
+# Why?
+Without the index, database scans each and every row  to find what we need.
+With an index this process is much faster, as the database quickly locate the data.
+
+Django automatically create indexes for
+1. Primary key
+2. Field with unique is  true
+
+Custom indexing- 
+class Product(models.Model):
+    name = models.CharField(max_length=255, db_index=True)  # Adds an index
+db_index= creates an index for the name field.
+
+for indexing in multiple fields we can create composite index.
+
+class Product(models.Model):
+    name = models.CharField(max_length=255)
+    category = models.CharField(max_length=255)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['name', 'category']),  # Composite index
+        ]
+
+
+-----
+
+Json (dump, loads) and python dictionary.
+
+JSON stands for Java script object notation, Json are similar to python dictionary but the type of JSON are string whereas the type of python dictionaries are dictionary.
+These are used to storing and exchanging the data
+
+
+# Python Dictionary
+data = {"name": "Sanskar", "age": 25, "city": "Kota"}
+
+# Equivalent JSON
+json_data = '{"name": "Sanskar", "age": 25, "city": "Kota"}'
+
+
+- To convert the python dictionary to JSON we use JSON.dump or JSON.dumps.
+
+	Use json.dumps to convert the python dictionary to JSON , and json.dumps to to store the JSON in string format.
+
+	use JSON.dump() you want to writes the JSON data into a file.
+
+- Converting JSON to python dictionary (JSON.load, JSON.loads)
+	These methods convert JSON- formatted data into a python dictionary.
+	Json.loads() convert a JSON string into a python dictionary.
+	Json.load() reads a JSON file and convert it into  a dictionary.
+
+
+---------
+# PM2( process manager ) 
+
+PM2 is a process manager allow us to keep the applications running in the background, restart them on failure and manage the logs.
+
+Key features of the PM2
+- keeps application alive.
+- support the log management
+- start applications on system boot
+
+------
+# Crontab
+
+crontab is used for running scheduled tasks in DJango, such as
+- Running the database backups
+- Sending scheduled emails.
+- Clearing expired sessions.
+
+crontab is a job schedular which work on epoch and unix , used to schedule scripts and commands to run at a specific time.
+
+------
+# Caching(file based, redis, database )-
+
+Caching is a technique to store the frequently accessed data into temporary storage(or cache) so that future request for the same data will be served faster.
+
+# Why?
+Performance- Reduces the databse or the API calls
+Scalability- Handles the increased load by serving the cached data
+Latency- Faster responses since the data is pre-fetched or compound
+
+# Types of caching
+
+- File based caching 
+	Cached data is stored un files or disk.
+	
+	Use cases:
+	- simple applications or local setups.
+	- Small datasets that don't require fast access
+	Advantages
+	- Easy to set up
+	- Persistent
+	Disadvantages
+	- Slow
+	- Not suitable for high performance use cases
+	
+- Redis Caching
+	Redis is a high performance in- memory key-value store often use for caching
+	 Use cases
+		- Real time apps
+		- fast read
+		- distributed caching
+	Advantages-
+		Blazing fast speed
+		Support data structures like strings hash list sets
+		Distributed and scalable
+	Disadvantages-
+	- Volatile(data may be lost if redis isn't persisted)
+	- Requires additional infrastructure
+	
+- Database caching-
+	Use cases
+	- When no external cache system is availaible
+	- smaller applications where adding in-memory system isn't feasible
+	Advantages-
+	- No need for additional infrastructure
+	- Persistent(data survives restarts)
+	Disadvantages-
+	- Slower than in-memory
+	- Increased load on database
+------
+# API (Application programming Interface)
+
+Think of API as a waiter i.e it act as a bridge between the client and server, client act as the customer and the server act as the cook in kitchen, so once the client ask for the data API take that request to the cook or the server and brings back the dish(response).
+
+Example- When we visit a weather app. The app request weather data from an API, The API responds with "Today's weather is sunny and the temperature is 30 degrees"
+
+--------
+# Authentication
+
+This is about proving who you are.
+
+It is like showing our id to get into a club.
+The server act as the security guard that checks your credentials to verify you are allowed to use the API or system.
+
+Example- When we log in to an app we enter our credentials i.e username and password to confirm our identity.
+
+-------
+# Authorization
+
+This is about what we are allowed to do .
+
+- After we are inside the club, the bouncer(system) checks whether you can access the VIP are or just the dance floor.
+
+Example- When we log into a system, but can only view your own profile not someone's else's
+
+-----
+# How the API handles both?
+Authentication- API often use tokens to identify who we are.
+Authorization- Once authenticated, the server checks our permissions to decide whether we are authorized to perform a task.
+
+----
+# Default Dictionary 
+
+A default dictionary is just a python dictionary but with a twist
+like if we try to access a key that doesn't exist in our dictionary it will throw an error, but in case of the default dictionary it return the default value provided.
+
+Without default dictionary we need to write and extra code to handle the exception
+With default dictionary, it happens automatically and save the time and effort.
+
+- `defaultdict` saves time by **automatically handling missing keys**.
+- The default value is determined by the function you pass (e.g., `int` for `0`, `list` for `[]`).
+- It's great for tasks like counting or grouping.
+
