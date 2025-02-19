@@ -398,3 +398,166 @@ With default dictionary, it happens automatically and save the time and effort.
 - The default value is determined by the function you pass (e.g., `int` for `0`, `list` for `[]`).
 - It's great for tasks like counting or grouping.
 
+---------
+
+# Settings file components
+
+- BASE_DIR= it its the main directory which contains our project
+- secret_key= secret key in django is like a password for our project, which is used to 
+	1. Keep our app secure-Django uses it to create hashes for  things like session cookies, password, csrf tokens, etc.
+	2. Make hashes unique-Each project's hashes are different because the secret_key is different
+- Debug- Debug setting in Django is like a switch that tells Django how much information to show when something goes wrong.
+- Debug=True- it returns the complex python errors if there to the user which can overwhelm the user and leak the private information as well.
+- ALLOWED_HOSTS=Tell our app that which domain name and IP address are allowerd to host it.
+- Middleware- These are the pipeline that processes requests and responses before they reach your app or go back to the user.
+	Each malware can perform specific tasks such as processing requests, processing response, Adding security measures and managing sessions.
+	There are different types of malwares present in django like security=adds security headers to request and responses, session=Manage sessions for the logged in users, csrf-Protects against the cross site request forgery , Auth= Associate the users with request ,Common= Performs general tasks like url normalisation.
+	
+	
+ Django processes the request from the top to the bottom of this list when it comes in and reverses the order when sending the response back.
+ - DEFAULT_AUTO_FIELD specifies the type of the primary key field that django uses for our models, if we don't explicitly present one.
+
+-----
+# Django modules
+- Django.contrib= Collection of pre built apps provided by django, These apps are like plugins that add commonly needed features to our django project.
+	- includes apps for things like:
+	- Authentication
+	- User management
+	- Static file handling
+	- Admin interface
+	- Sessions
+- Django.Conf= This provides access to project settings and configuration.
+
+
+------
+# Migrations folder
+Migration folder in our django project keep track the changes that are made to our models. It stores mitigation files that describe these changes and allows Django to apply them to your database.
+
+It is used to keep our database schema in sync with our models.py file.
+Whenever we make the changes the migration folder record those changes.
+
+------
+# Django Auth Forms-
+This module provides pre-built forms for the user authentication and management. These forms are specially designed to handle common authentication related task like, logging in, signing in, and changing passwords.
+
+Key forms in the Django.contrib.auth.forms are
+
+1. User Creation Form-
+	- Used for registering new users.
+	- Automatically includes field like username, password1 and password2.
+2. Authentication form:
+	- Used for logging in the users.
+	- Includes fields like username and password.
+	- Automatically handles the authentication using Django's Backend.
+3. Password Change form:
+	- Used for changing user's password when they are already logged in.
+	- Requires the user to enter their old password along with the new one
+4. Password reset form:-
+	- Sends an email with a password reset link to the user.
+5. Set Password form- To set a new password after receiving a reset email.
+
+---------
+# Meta class
+
+Metaclass is a class that defines how other classes are created.
+
+- It is responsible for creating class, just like how a normal class is responsible for creating objects.
+- When we define a new class, python uses a metaclass to create that class. By default the metaclass used is type.
+
+------
+
+# API 
+API stands for application programming interface
+It helps apps interacting with each other, for example a front end app like react/angular can send request to the Django app to fetch the data.
+
+# How does API look like
+
+API often use http request and respond with the JSON 
+i.e GET/api/products/
+Response= [
+  {"id": 1, "name": "Laptop", "price": 50000},
+  {"id": 2, "name": "Phone", "price": 30000}
+]
+
+# How do we create API?
+
+To build API we use the Django Rest Framework.
+
+Steps
+- Install Django Rest Framework.
+- Inlist the DRF in the installed App.
+- Create a Model 
+- Create a serializer(A serializer converts Python objects like model into JSON and vice versa)
+- Create a view(view handle the API logic (i.e fetching data and saving the new data )
+- Set up URL
+
+# Test your API
+- Start the server visit - http----/api/products/(you will see the JSON data foe all the products)
+
+-----
+# Understanding the API views in DRF
+
+API views handle the request and response in Django. They determine how data is retrieved, modified and deleted.
+
+# Types of API views.
+- function based views- uses @API_view decorator.
+- Class based views- uses APIview for more flexibility
+- ViewSets- The most powerful method automatically handle CRUD operation.
+
+# Function based views
+They are the easiest they use the @api_view decorator to specify allowed HTTP methods like GET, POST, PUT and DELETE.
+
+------
+# Redis
+
+# What is Redis?
+
+- Redis stands for Remote Dictionary Server , it is like a super fast notebook where you can store and look up data quickly.
+- Its a database but different from traditional ones.
+- Redis store the data in memory (RAM) instead of disk, this makes it really fast.
+
+# Why is Redis fast?
+Because traditional database store the data in disk while the redis store the data in memory.
+so fetching and saving is very fast.
+
+# What can redis store?
+Redis is called a key-value store which means
+Key: A unique identifier(like nametag)
+Value: The actual data you want to save(a number, string, list, etc)
+
+It supports different types of data like.
+- Strings
+- Lists
+- hashes
+- set
+- sorted sets
+- Bitmaps, streams and more.
+
+# What is redis used for?
+Redis is your helper for making things fast.
+1. Caching- Store frequently accessed data so apps don't have to keep recalculating(user sessions or recent searches )
+2. Real time data- perfect for things like leaderboard, chat apps or live updates
+3. queues- Managing tasks (like sending emails, 'process files' )
+4. pub/sub messaging- real time notifications. one part can send the message and others can listen and respond.
+
+
+# Redis in Django
+
+Caching- speed up our app by storing results of the expensive operations(eg, database, queries).
+
+Sessions- Store user session data in Redis instead of the database or file system.
+
+Task Queues- Use Redis with tools like celery to handle background tasks.
+
+# Steps to use the redis with Django
+
+1. Install Redis and Required Libraries
+2. Then, install Python library to connect Django with redis
+3. Configure Django to use redis
+	1. For caching - Add the redis in settings.py
+	2. For sessions- Use Redis to store session data, now when users log in,their session data is stored in Redis, making it faster and more scalable.
+	3. For background Tasks- Use Celery with redis as the message broker.
+	
+
+
+
